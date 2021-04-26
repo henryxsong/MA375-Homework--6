@@ -1,3 +1,11 @@
+# Henry Song  |  MA375  |  Spring 2021
+# Homework #6: Topic 6 - Differential Equations
+# File: Problem1.py
+# Requirements: numpy, scipy, matplotlib
+# Description: Calculates solutions to a differential equation using the 
+#              Runge-Kutta method.
+#==========================================================================
+
 import numpy as np
 import scipy as sp
 from scipy.integrate import solve_ivp
