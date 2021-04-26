@@ -3,7 +3,10 @@
 # File: Problem1.py
 # Requirements: scipy, matplotlib
 # Description: Calculates solutions to a differential equation using the 
-#              Runge-Kutta method.
+#              Runge-Kutta method. Uses solve_ivp to calculate the diff-eq.
+#              The method uses RK45 (Runge-Kutta method order 5(4)) by default,
+#              however it is explicitly called to ensure method is used.
+#              RK45 is noted as the python counterpart of ode45 in matlab.
 #==========================================================================
 
 import scipy as sp
@@ -12,8 +15,8 @@ import matplotlib.pyplot as plt
 
 # calculation functions
 diff_eq = lambda y, t : t**2 + y**2 #differential equation
-solution = solve_ivp(diff_eq, t_span=[0, 1.5], y0=[1], max_step=0.01) #calculates the solution for all t values from 0 to 1.5 in intervals of 0.01
-specific_solution = solve_ivp(diff_eq, t_span=[0, 1.5], y0=[1], max_step=0.01, t_eval=[0.8, 0.9, 0.95, 1]) #calculates the solution for specified t values
+solution = solve_ivp(diff_eq, t_span=[0, 1.5], y0=[1], method='RK45', max_step=0.01) #calculates the solution for all t values from 0 to 1.5 in intervals of 0.01
+specific_solution = solve_ivp(diff_eq, t_span=[0, 1.5], y0=[1], method='RK45', max_step=0.01, t_eval=[0.8, 0.9, 0.95, 1]) #calculates the solution for specified t values
 
 # print functions for solutions
 print("Solution @ t = %0.2f" % specific_solution.t[0], ":", specific_solution.y[0][0])
